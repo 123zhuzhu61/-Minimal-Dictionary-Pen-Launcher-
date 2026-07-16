@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 控制中心图标背景（开启状态 - 高辨识度亮蓝） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#00B0FF" />
+    <stroke
+        android:width="4dp"
+        android:color="#80D8FF" />
+</shape>

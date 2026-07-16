@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9">
+
+    <!-- 主屏应用网格 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="60dp"
+        android:paddingRight="50dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:descendantFocusability="blocksDescendants" />
+
+    <!-- 全部应用抽屉（全屏覆盖） -->
+    <FrameLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="#ffffff">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/drawer_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="60dp"
+            android:paddingRight="50dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp" />
+
+    </FrameLayout>
+
+    <!-- 左侧切换按钮 -->
+    <Button
+        android:id="@+id/btn_toggle"
+        android:layout_width="50dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_vertical|left"
+        android:background="@drawable/btn_side"
+        android:text="全部\n应用"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginLeft="4dp" />
+
+    <!-- 右侧控制中心触发热区（透明，12dp宽） -->
+    <View
+        android:id="@+id/cc_trigger_zone"
+        android:layout_width="16dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@android:color/transparent" />
+
+</FrameLayout>

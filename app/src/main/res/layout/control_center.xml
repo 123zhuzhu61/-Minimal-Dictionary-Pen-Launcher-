@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 控制中心：全屏覆盖，从左向右滑动呼出，只能滑动关闭 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/control_center_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:focusable="false">
+
+    <!-- 半透明蒙层（不可点击，仅视觉） -->
+    <View
+        android:id="@+id/cc_scrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <!-- 全屏面板 -->
+    <LinearLayout
+        android:id="@+id/cc_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#F01C1C2E"
+        android:padding="0dp">
+
+        <!-- ===== 左侧：开关区（WiFi + 蓝牙） ===== -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <!-- WiFi 卡片（图标颜色表示状态） -->
+            <LinearLayout
+                android:id="@+id/cc_wifi_card"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/cc_card_bg"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/cc_wifi_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_wifi"
+                    android:padding="14dp"
+                    android:background="@drawable/cc_icon_bg_active" />
+
+            </LinearLayout>
+
+            <!-- 蓝牙卡片（图标颜色表示状态） -->
+            <LinearLayout
+                android:id="@+id/cc_bt_card"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/cc_card_bg"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/cc_bt_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_bluetooth"
+                    android:padding="14dp"
+                    android:background="@drawable/cc_icon_bg_inactive" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 竖向分隔线 -->
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#55FFFFFF" />
+
+        <!-- ===== 中间：时间/日期/电量（支持滑动返回） ===== -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!-- 内容区域（更紧凑） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#18FFFFFF"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/cc_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="44sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/cc_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2026年4月19日"
+                    android:textColor="#DDDDDD"
+                    android:textSize="12sp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center" />
+
+                <!-- 电量/WiFi/蓝牙状态行 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:background="@drawable/cc_status_bg">
+
+                    <TextView
+                        android:id="@+id/cc_battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/cc_wifi_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_wifi"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/cc_bt_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginLeft="6dp"
+                        android:src="@drawable/ic_bluetooth"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <!-- 滑动返回检测层（覆盖中间区域，透明） -->
+            <View
+                android:id="@+id/cc_swipe_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:focusable="false" />
+
+        </FrameLayout>
+
+        <!-- 竖向分隔线 -->
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#55FFFFFF" />
+
+        <!-- ===== 右侧：调节区（水平药丸滑块） ===== -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <!-- 音量调节（大药丸 - 颜色铺满整个区域） -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/cc_pill_container">
+
+                <!-- 音量图标（固定在左侧） -->
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_volume"
+                    android:padding="4dp"
+                    android:elevation="2dp" />
+
+                <!-- 滑块（无滑钮，颜色铺满整个FrameLayout） -->
+                <SeekBar
+                    android:id="@+id/cc_seek_volume"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="100"
+                    android:progress="50"
+                    android:minHeight="0dp"
+                    android:maxHeight="1000dp"
+                    android:progressDrawable="@drawable/cc_pill_progress_blue"
+                    android:thumb="@android:color/transparent"
+                    android:thumbOffset="0dp"
+                    android:splitTrack="false"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp" />
+
+            </FrameLayout>
+
+            <!-- 亮度调节（大药丸 - 颜色铺满整个区域） -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/cc_pill_container">
+
+                <!-- 亮度图标（固定在左侧） -->
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_brightness"
+                    android:padding="4dp"
+                    android:elevation="2dp" />
+
+                <!-- 滑块（无滑钮，颜色铺满整个FrameLayout） -->
+                <SeekBar
+                    android:id="@+id/cc_seek_brightness"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="100"
+                    android:progress="50"
+                    android:minHeight="0dp"
+                    android:maxHeight="1000dp"
+                    android:progressDrawable="@drawable/cc_pill_progress_yellow"
+                    android:thumb="@android:color/transparent"
+                    android:thumbOffset="0dp"
+                    android:splitTrack="false"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

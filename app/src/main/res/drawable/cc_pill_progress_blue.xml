@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 药丸形滑块进度条（蓝色 - 音量，颜色充满整个区域） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景：透明（由容器提供背景） -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <corners android:radius="32dp" />
+        </shape>
+    </item>
+    <!-- 进度：蓝色填充，从左侧开始，圆角 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="#2196F3" />
+                <corners android:radius="32dp" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 控制中心设置对话框 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="400dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- 是否启用控制中心 -->
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_cc_enable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启用控制中心"
+            android:textSize="16sp"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="关闭后，从右侧向右滑动将不会呼出控制中心。"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:paddingLeft="8dp"
+            android:paddingBottom="12dp" />
+
+        <!-- 分隔线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时间格式"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radio_time_format"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24小时制"
+                android:layout_marginEnd="24dp" />
+
+            <RadioButton
+                android:id="@+id/radio_12h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12小时制" />
+
+        </RadioGroup>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_show_seconds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示秒"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>

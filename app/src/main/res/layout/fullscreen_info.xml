@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fullscreen_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingHorizontal="16dp">
+
+    <!-- 适配词典笔狭长屏幕：垂直紧凑居中、无多余内边距 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:spacing="8dp">
+
+        <!-- 时间：缩小字号，适配狭长屏 -->
+        <TextView
+            android:id="@+id/info_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="00:00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="42sp"
+            android:textStyle="bold" />
+
+        <!-- 日期：精简字号，紧凑排版 -->
+        <TextView
+            android:id="@+id/info_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2026年4月11日 星期六"
+            android:textColor="#CCCCCC"
+            android:textSize="14sp" />
+
+        <!-- 电池、WiFi、蓝牙：紧凑水平布局 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:spacing="8dp">
+
+            <TextView
+                android:id="@+id/info_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textColor="#CCCCCC"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/info_wifi"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_wifi"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/info_bluetooth"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_bluetooth"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- 提示文字：更清晰、间距合理 -->
+        <TextView
+            android:id="@+id/info_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="点击任意位置进入主屏"
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

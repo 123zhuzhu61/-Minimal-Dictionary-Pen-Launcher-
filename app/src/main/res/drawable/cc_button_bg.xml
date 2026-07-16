@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 控制中心按钮背景 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#5A4A5A6E" />
+    <corners android:radius="28dp" />
+    <stroke
+        android:width="2dp"
+        android:color="#77FFFFFF" />
+</shape>

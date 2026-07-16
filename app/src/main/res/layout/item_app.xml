@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  应用图标格子
+  编辑模式时：btn_add_home（左上）和 btn_uninstall（右上）叠加显示
+  普通模式时：两个按钮均 GONE
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="96dp">
+
+    <!-- 图标 + 名称（居中） -->
+    <LinearLayout
+        android:id="@+id/app_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp"
+        android:minHeight="96dp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp" />
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="11sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- 左上：添加到主屏（编辑时显示） -->
+    <ImageView
+        android:id="@+id/btn_add_to_home"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="top|left"
+        android:layout_margin="2dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_add_to_home"
+        android:padding="3dp"
+        android:visibility="gone" />
+
+    <!-- 右上：卸载（编辑时显示，系统应用半透明禁用） -->
+    <ImageView
+        android:id="@+id/btn_uninstall"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="top|right"
+        android:layout_margin="2dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_uninstall"
+        android:padding="3dp"
+        android:visibility="gone" />
+
+</FrameLayout>

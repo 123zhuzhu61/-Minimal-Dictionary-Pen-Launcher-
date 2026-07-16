@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="400dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_auto_enable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启用自动显示"
+            android:textSize="16sp"
+            android:padding="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="无操作延迟（秒）（5-120）"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/et_delay_seconds"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="15"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:drawable/editbox_background"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时间格式"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_time_format"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/radio_24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24小时制"
+                android:layout_marginEnd="24dp"/>
+
+            <RadioButton
+                android:id="@+id/radio_12h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12小时制"/>
+
+        </RadioGroup>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_show_seconds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示秒"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
